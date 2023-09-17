@@ -1,25 +1,40 @@
 # pes_openlane
 
-# Contents
-## Day 1
+# Table of Contents
+<details>
+<summary>Day 1</summary>
+<br>
+
 - [How to Talk to Computers](#how-to-talk-to-computers)
 - [SoC Design and OpenLANE](#soc-design-and-openlane)
 - [Getiing Familiar with the Open Source EDA Tools](#getting-familiar-with-the-open-source-eda-tools)
+</details>
 
-## Day 2
+<details>
+<summary>Day 2</summary>
+<br>
+  
 - [Chip Floor Planning Considerations](#chip-floor-planning-considerations)
 - [Library Binding and Placement](#library-binding-and-placement)
 - [Cell Design and Characterization Flow](#cell-design-and-characterization-flow)
+</details>
 
-## Day 3
+<details>
+<summary>Day 3</summary>
+<br>
+
 - [Labs for CMOS inverter ngspice simulations](#labs-for-cmos-inverter-ngspice-simulations)
 - [Inception of Layout and CMOS Fabrication Process](#inception-of-layout-and-cmos-fabrication-process)
 - [Sky130 Tech File Labs](#sky130-tech-file-labs)
+</details>
 
-## Day 4
+<details>
+<summary>Day 4</summary>
+<br>
+  
 - [Timing Modelling using Delay Tables](#timing-modelling-using-delay-tables)
+</details>
 
-# Day 1
 
 ## How to Talk to Computers
 - First we look at the introduction to the RISC-V ISA(Instructiion Set Architecture). Supposing we need to execute a C program on a particular hardware. First the C-program is converted into Assembly Code( here for RISC-V processor). Then the assembly code is converted into binary. An RTL implements this code for the particular layout of the RISC-V processor and the output is visible.
