@@ -90,14 +90,15 @@ cd openlane_working_dir/openlane/
 ```
 - If the 'interactive' keyword is not present, then the entire flow of the tool is run.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/7c205c9e-58f2-43e1-835e-c73ca47c0ff4)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/4362b597-7df4-4999-b930-6097e3ca82b9)
 
 - Now we must import all the packages required to run the flow, we use the command:
 ```
 package require openlane 0.9
 ```
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/c7a07b4a-f833-4696-a2cd-c19cfe4a6b77)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/42efcc21-5170-4141-a308-bfc345b5d1cb)
+
 - We will be working with the 'picorv32a' design.
 - The src folder has the verilog file and the sdc file of the design
 - Now we do the design setup stage using the command:
@@ -105,7 +106,8 @@ package require openlane 0.9
 prep -design picorv32a
 ```
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/e268e6aa-28dc-465e-8a44-5c7c49b7eec1)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/914d607a-dd9e-4b4f-96d0-6b9b7e4d5e1c)
+
 - After preparing the design, we can see that a new 'runs' folder is created.
 
 - To synthesize the design we type
@@ -120,9 +122,9 @@ run_synthesis
 
 ![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/c0747e9d-b9ef-4609-ac75-005bb8fc46b6)
 - The flop ratio can be calculated by using:
-```
+
 No. of flops/No. of cells = 1613/14876 = 0.108
-```
+
 - In percentage there is 10.8% of the total number of cells are Flops
 
 ![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/fa830470-1b1d-4074-a710-8398db096aab)
