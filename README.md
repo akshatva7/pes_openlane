@@ -7,7 +7,7 @@
 
 - [How to Talk to Computers](#how-to-talk-to-computers)
 - [SoC Design and OpenLANE](#soc-design-and-openlane)
-- [Getiing Familiar with the Open Source EDA Tools](#getting-familiar-with-the-open-source-eda-tools)
+- [Getting Familiar with the Open Source EDA Tools](#getting-familiar-with-the-open-source-eda-tools)
 </details>
 
 <details>
@@ -35,6 +35,7 @@
 - [Timing Modelling using Delay Tables](#timing-modelling-using-delay-tables)
 </details>
 
+# Day 1
 
 ## How to Talk to Computers
 - First we look at the introduction to the RISC-V ISA(Instructiion Set Architecture). Supposing we need to execute a C program on a particular hardware. First the C-program is converted into Assembly Code( here for RISC-V processor). Then the assembly code is converted into binary. An RTL implements this code for the particular layout of the RISC-V processor and the output is visible.
