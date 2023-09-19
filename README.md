@@ -601,3 +601,131 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 - The following is displayed.
 - Zooming into the design using 'z' we can see the sky130_vsdinv than we defined.
 - We have plugged in our custon cell in the OpenLANE flow.
+
+## Timing Analysis with Ideal Clocks using OpenSTA
+
+**Configure OpenSTA for Post-Synth Timing Analysis**
+- We must create two files
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/c9867e29-810f-4aca-87cb-c71032f823e4)
+- The first one must be in the openlane directory
+- This file is known as the 'pre_sta.conf' file.
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/9e849dac-a4ff-4420-9a48-bf759f6c82e4)
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/92bd662a-e176-41c3-afb5-a808630a1af8)
+- The second is the my_base.sdc file.
+- This should be in the 'src/sky130' directory under the picorv32a directory.
+
+- To run the timing analysis we type
+```
+sta pre_sta.conf
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/130dfd6a-d980-4cd8-99e0-4ca26d7cd32b)
+- Following result is displayed
+- There is a slack violation
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/a033e771-31e5-4b36-b783-d37e0fc52001)
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/48528ec3-a353-4809-8d67-4238ad7880fc)
+- Settinf MAX_FANOUT value to 4 reduces the slack violation.
+
+## Clock Tree Synthesis TritonCTS and Signal Integrity
+**Run CTS**
+- To run CTS we need to type the command
+```
+run_cts
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/29f40c8f-71de-43cb-9829-b188b7ba0c97)
+- New .v is created
+
+**Timing Analysis with Real CLocks using OpenSTA**
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/9946a62e-f301-4eab-afe7-f3127d4e56b6)
+- First we type the command ```openroad```.
+- Then we read the .lef file using the command
+```
+read_lef /openLANE_flow/designs/picorv32a/runs/16-09_19-58/tmp/merged.lef
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/168b1183-65aa-4e51-ab9f-8c6e227e188c)
+- Then we read the .def file.
+```
+read_def /openLANE_flow/designs/picorv32a/runs/16-09_19-58/results/cts/picorv32a.cts.def
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/0e3199ee-c1dc-43fb-8097-0c688b685c48)
+- We then do
+```
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/16-09_19-58/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty -max $::env(LIB_SLOWEST)
+read_liberty -max $::env(LIB_FASTEST)
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/4b35830f-9822-48c7-ab41-5bcfb1eea4f6)
+- We read the .src file.
+```
+read_sdc /openLANE_flow/designs/picorv32a/src/sky130/my_base.sdc
+```
+- We set the clock
+```
+set_propagated_clock [all_clocks]
+```
+- Checking the report
+```
+report_checks -path_delay min_max -format full_clock_expanded -digits 4
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/f637e66a-db20-4cb6-8b84-75c11267c0eb)
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/184e7412-dc84-453c-b2f0-76b40e3588f4)
+- Above results are displayed
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/7fd17b40-dfe1-4b1f-b597-fa5b5c911f74)
+- We perform it again for a more accurate result
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/a563b159-c6bb-44ec-a44a-e406c16f5ed3)
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/19435f73-e4c7-4663-9c21-0780cdd3f2a6)
+- Above results are displayed
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/0415b653-7c0b-478d-91c3-e70d0e94d654)
+```
+report_clock_skew -hold
+report clock_skew -setup
+```
+
+# Day 5
+## Power Distribution Network and Routing
+
+**Build Power Distribution Network**
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/02713233-6b98-4280-b70b-c54aea1d9ddb)
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/965b7342-ccfa-41ee-9798-4180265a6119)
+- To do this first we type
+```
+gen_pdn
+```
+
+![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/8467354c-875a-44e9-8ef1-f5be38bd0cc4)
+- We see that there is a change in the DEF.
+- To run the rounting we type ```run_routing```.
+- To check for DRC errors we need to check the 'tritonRoute.drc' folder
+- To extract the parasitics we need to use an extractor engine.
+- We use the SPEF Extraction.
+
+**SPEF Extraction**
+- To use this engine we need to go to
+```
+cd Desktop/work/tools/SPEF_Extractor
+```
+- Next we need to use this command
+```
+python3 /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-09_19-58/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-09_19-58/results/routing/picorv32a.def
+```
+- SPEF file is created in ```/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-09_19-58/results/routing/```
