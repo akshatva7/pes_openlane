@@ -35,6 +35,15 @@
 - [Timing Modelling using Delay Tables](#timing-modelling-using-delay-tables)
 </details>
 
+<details>
+<summary>Day 5</summary>
+<br>
+
+- [Power Distribution Network and Routing](#power-distribution-network-and-routine)
+
+</details>
+
+
 # Day 1
 
 ## How to Talk to Computers
