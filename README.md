@@ -66,13 +66,13 @@ A simplified RTL to GDSII Flow is :
 
 **OpenLANE ASIC Flow**
 
-![Screenshot from 2023-09-10 23-56-09](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/b1bbef29-0748-4fd7-acf8-8c421d599aca)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/0ca2d9d4-3422-4714-8947-d6a0426575f3)
 
 ## Getting Familiar with the Open Source EDA Tools
 
 ### Design Preparation Step
 
-![image](https://github.com/akshatva7/pes_openlane/assets/135726741/0ca2d9d4-3422-4714-8947-d6a0426575f3)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/4362b597-7df4-4999-b930-6097e3ca82b9)
 
 - Let us first go the the working directory using the following commands
 ```
@@ -90,7 +90,6 @@ cd openlane_working_dir/openlane/
 ```
 - If the 'interactive' keyword is not present, then the entire flow of the tool is run.
 
-![image](https://github.com/akshatva7/pes_openlane/assets/135726741/4362b597-7df4-4999-b930-6097e3ca82b9)
 
 - Now we must import all the packages required to run the flow, we use the command:
 ```
@@ -117,18 +116,15 @@ run_synthesis
 - This command invokes yosys, runs the synthesis and the abc commands.
 - A long process is observed after typing this command, which for a little over two mintues.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/7a3d0687-8a0e-4754-bf53-7bbdf6bd3a71)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/8d5d303a-1462-4927-bcff-28ff32bf4676)
 - A synthesis successful message must be displayed.
 
 ![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/c0747e9d-b9ef-4609-ac75-005bb8fc46b6)
 - The flop ratio can be calculated by using:
 
-No. of flops/No. of cells = 1613/14876 = 0.108
+No. of flops/No. of cells = 1613/18036 = 0.0894
 
-- In percentage there is 10.8% of the total number of cells are Flops
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/fa830470-1b1d-4074-a710-8398db096aab)
-- Under the runs folder we can check out the netlist file generated after synthesis
+- In percentage there is 8.94% of the total number of cells are Flops
 
 # Day 2
 ## Chip Floor Planning Considerations
@@ -193,7 +189,7 @@ run_floorplan
 ```
 in the OpenLANE shell.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/4263c922-01d5-4806-afab-2d81ebbb73e8)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/ed828ecf-10eb-4bbf-a33a-6e48dcf558a2)
 
 - To open the Floorplan we go to the required directory that is
 ```
@@ -208,25 +204,25 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 - The following layout is displayed
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/c3eeadc7-821f-45ce-b077-7702623e25bf)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/b7648d2b-1814-465e-b93d-1cdf49aa8b1d)
 - We can press 's' and then 'v' to align the design to the center of the screen.
 
 - We can right click on the mouse and pess 'z' to zoom into a desired part.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/3d251ffe-c125-41be-a96e-00f2391b89fb)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/70c27130-e482-4c58-a13b-251a3ce90824)
 - We can see here that the I/O ports are equidistant
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/2b79ae12-8c15-44e1-b800-48981f3fc442)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/e87939b1-9c94-4bc0-b782-b77e1d37f552)
 - We can check the details of the ports as follows
   - Hover over a port with your crosshair and press 's' on your keyboard
   - Now open the tkcon command window and type ```what```.
   - This will show you the details of the selected port.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/2ee6d6b3-a7e9-415b-b2dd-1271d16dac2c)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/876f0bb0-6e34-45c2-9ba0-6f4b6c147bba)
 - If we zoom in a little more, we can see the tap cells.
 - They are present to prevent latch up conditions which occur in the CMOS devices
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/7e726389-8a96-4572-b6a7-59d5eb0d821a)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/703252c8-fe34-48bb-bc2b-b9ef28f4dd51)
 - These are the standard cells that are used in the design
 
 ## Library Binding and Placement
@@ -251,24 +247,22 @@ run_placement
 ```
 in the OpenLANE shell.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/56832e08-c84e-4c78-8a24-73e1b9bdb05f)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/9fef6c00-fbf6-4db9-8a8b-d3ebf3f60503)
 - This is the result displayed. As we can see the '/picorv32a.placement.def' file is read.
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/0adbe3c9-fe26-4770-9eb0-1ed9ca581402)
 - We move one directory up from the 'floorplan' folder using
 ```
-cd ../placement/
+cd ..
 ```
 - To view the placement design we use the command
 ```
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
 ```
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/313098df-673a-466d-8cce-169a9932fcce)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/a0cbf93a-c94b-452e-942d-2585e5aa3f11)
 - The above is displayed.
 - All these standard cells were present at the initial layout of the floorplan.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/2a7cce9b-9550-4eaf-922e-8a64306f05ac)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/f010d7f8-25b8-4ee3-b4f6-19f84bcb5a8a)
 - If we zoom in we can see the placement of the standard cells in the standard cell rows.
 
 ## Cell Design and Characterization Flow
@@ -307,10 +301,6 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 # Day 3
 ## Labs for CMOS inverter ngspice simulations
-**IO Placer Revision**
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/fabe5ca4-7dde-43f9-a8e4-260ed11ed820)
-- The following command can be typed to change the I/O pins placemnt configuration.
 
 ## Inception of Layout and CMOS Fabrication Process
 **SPICE Deck Creation for CMOS Inverter**
@@ -322,12 +312,12 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 **SPICE Simulation and Switching Threshold**
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/29e6f5c4-d166-4283-85c2-81947d29f165)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/15efd9e8-a64d-4d9a-ae76-3bfb92928f84)
 - The CMOS on the right side has a bigger size than the one on the left.
 - These waveforms tell us that the CMOS is a very robust device. The characteristics of the CMOS are maintained across a variety of sizes.
 - The arrow is pointing to the point where 'Vin = Vout'.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/247e37b7-b3b3-4036-9eaf-2c5380a6c71a)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/ad3e438f-de14-4ec2-bd76-6d4fc4af7bfe)
 - Above graph gives details on each point and its significance
 
 **A Git Clone and some other Steps**
@@ -364,11 +354,11 @@ in the follwoing directory shown in the figure
 ```
  magic -T sky130A.tech sky130_inv.mag &
 ```
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/a9cad291-c120-491b-b8e1-a704a22d724c)
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/4544d764-7b49-4b1f-b3d7-0ae61961bd81)
 - The following layout is displayed.
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/dad32c61-2a53-4114-b599-93a4025481da)
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/f10146f9-71a2-4d15-b377-43a72034b9fc)
 - We can get to know the details of the inverter by hovering the mouse cursor over it and pressing 's' on the keyboard. Then we can type ```what``` in the tkcon.
 - Pressing 's' three times will show what parts are connected to the selected part.
 
@@ -377,13 +367,13 @@ in the follwoing directory shown in the figure
 
 **Steps to Create Standard Cell Layout and Extract Spice Netlist**
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/aa5b0d26-1711-4fb3-84ff-817ca929110f)
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/7a2bca47-28d8-4c2e-96cd-4fdcb983fcf0)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/cd23b6c5-5683-4299-b401-4936472f337b)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/cae149da-cb11-465b-bfba-80670ee17f00)
 - DRC errors can be viewed in the tkcon.
 
 To extract Spice Netlist we perform the following steps in the tkcon window:
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/deb99366-4eb3-40b6-8172-ecce6962db33)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/02025ca9-7763-406e-a026-454a38f5c50d)
 - We use the commands
 ```
 ext2spice cthresh 0 rthresh 0 -> this is done to copy the parasitic capacitances
@@ -392,8 +382,7 @@ ext2spice cthresh 0 rthresh 0 -> this is done to copy the parasitic capacitances
 ```
 ext2spice
 ```
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/443ea6b4-b82e-4db6-b2d5-5192904507bd)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/9b92eadc-cf3f-4481-be1b-fe8b14d4628e)
 - We can see that a sky130_inv.spice file is created
 
 ## Sky130 Tech File Labs
@@ -401,10 +390,10 @@ ext2spice
 **Create Final SPICE Deck**
 - To start off we look at the minimum value of the layout window.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/6a5d5d43-94d8-4248-8681-5d8d94e924e4)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/3d79c52b-0377-4ebb-9d57-0db499c500bf)
 - We can use 'g' on the keyboard to activate the grid and after selecting a grid by right clicking on the mouse, we type ```box``` in tkcon window to check the minimum value of the layout window.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/fcadbb47-849c-4d5f-a15d-4612fb015be6)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/9cae262f-fb5d-4959-a5a9-8e93869a4189)
 - Next we need to open the spice file using the command
 ```
 gedit sky130_inv.spice
@@ -412,8 +401,7 @@ gedit sky130_inv.spice
 - We need to configure it to the above specifications.
 
 **Characterize Inverter using Sky130 Models**
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/548d6ace-9d74-47f4-906f-4614c1babaca)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/3161fa00-0af0-4d8c-9504-31b6752a9d57)
 - We now plot the graph for output vs input sweeping the time.
 - We first use the command
 ```
@@ -423,22 +411,19 @@ ngspice sky130_inv.spice
 ```
 plot y vs time a
 ```
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/b810d9fe-11e4-44f7-863c-ed19593e0b3c)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/b63006e2-378b-4586-882b-b2206a68e341)
 - The following graph is displayed.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/400506ec-61c3-458c-9130-7147ec496c6a)
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/55c43b65-5c02-451a-bb11-391de8d87571)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/6e3a3d52-7554-4642-b971-e9b139156f82)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/0e6c002d-f86b-468d-8a4c-fae0efa78b07)
 - Rise Time -> time taken to rise from 20% to 80% of the max value -> 2.25075e-09 - 2.184e-09 = 0.006675e-09 s.
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/93f95ac2-43e2-48de-93e1-07399e20b4b1)
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/fc3b2887-d910-4864-ae33-ef02fdb8035f)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/f63b5f9e-764a-458b-b4d4-4b8b73094e02)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/d3b58b62-079a-45ff-9080-54510b1751c9)
 - Propogation Delay/Cell Rise Delay -> 2.21379e-09 - 2.15e-09 = 0.06379e-09 s.
 
 **Sky130 PDKS and Steps to Download Magic Tool**
-
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/9f99bcfc-e79c-4c8b-afcf-27f3502b477f)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/01ff2db6-6a8f-4b26-9518-225502e0dbe8)
 - Enter the command
 ```
  wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
@@ -449,7 +434,7 @@ plot y vs time a
 mv drc_tests.tgz Desktop/
 ```
 
-![image](https://github.com/AniruddhaN2203/pes_pd/assets/142299140/dd984ca9-3692-43f1-b111-f90e5e7a4c08)
+![image](https://github.com/akshatva7/pes_openlane/assets/135726741/316a094f-e1e3-4742-8e18-7ad23737a2be)
 - Extract the file using
 ```
 tar xfz drc_tests.tgz 
