@@ -39,7 +39,7 @@
 <summary>Day 5</summary>
 <br>
 
-- [Power Distribution Network and Routing](#power-distribution-network-and-routine)
+- [Power Distribution Network and Routing](#power-distribution-network-and-routing)
 
 </details>
 
